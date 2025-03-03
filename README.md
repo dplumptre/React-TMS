@@ -38,10 +38,6 @@ Clone the project
 ```
 
 
-
-
-```
-
 Go to the project directory
 
 ```bash
@@ -51,10 +47,9 @@ Go to the project directory
 Go to a config file in  src > utils > config.js and update the api url like so below
 
 ```bash
-
 export const BASE_URL = "http://tms.test/api";
 export const IMAGE_BASE_URL = "http://tms.test";
-
+```
 
 enter
 ```bash
