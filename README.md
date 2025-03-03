@@ -41,7 +41,12 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd tms
+  cd React-TMS
+```
+
+Install dependencies
+```bash
+  npm install
 ```
 
 Go to a config file in  src > utils > config.js and update the api url like so below
