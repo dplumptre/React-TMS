@@ -4,7 +4,7 @@
 
 - Ademola Plumptre [dplumptre@yahoo.com]
 - 1.0, Feb 26, 2025: Readme...
-- Laravel 12
+- React v 19
 - git Url : https://github.com/dplumptre/React-TMS
 
 The Task Management System is designed to allow users to effectively manage their tasks through a backend API (Laravel) and a ReactJS frontend. Users will be able to perform CRUD operations on tasks, upload tasks in bulk using an Excel file, process the file asynchronously with a job/queue system, and upload/display task images.
