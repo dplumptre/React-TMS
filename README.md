@@ -49,11 +49,11 @@ Install dependencies
   npm install
 ```
 
-Go to a config file in  src > utils > config.js and update the api url like so below
+Go to a config file in  src > utils > config.js and update the api url like so below depending on your api link
 
 ```bash
-export const BASE_URL = "http://tms.test/api";
-export const IMAGE_BASE_URL = "http://tms.test";
+export const BASE_URL = "http://advanced-task-management-system.test/api";
+export const IMAGE_BASE_URL = "http://advanced-task-management-system.test";
 ```
 
 start your project 
