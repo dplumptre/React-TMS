@@ -1,5 +1,5 @@
 
-import { BASE_URL,IMAGE_BASE_URL } from "../utils/config";
+import { IMAGE_BASE_URL } from "../utils/config";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "../utils/icons";
 
@@ -30,7 +30,6 @@ const TaskModal = ({ show, onClose, task, setTask, handleSubmit, isView, isEdit 
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            {isView}
           <h5>{isView ? "View Image" : isEdit ? "Edit Task" : "Add Task"}</h5>
             <button type="button" className="btn-close" onClick={onClose}></button>
           </div>
