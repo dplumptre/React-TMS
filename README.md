@@ -55,6 +55,14 @@ start your project
 ```bash
 npm start
 ```
+<img width="919" alt="Screenshot 2025-03-03 at 01 35 29" src="https://github.com/user-attachments/assets/e4459db0-c506-46b8-8969-577b9571b513" />
+
+<img width="887" alt="Screenshot 2025-03-03 at 02 02 34" src="https://github.com/user-attachments/assets/817e4ccd-a600-466b-93b3-cf6d1c8fb1ff" />
+
+<img width="878" alt="Screenshot 2025-03-03 at 02 03 09" src="https://github.com/user-attachments/assets/3bed8cd3-170a-4b35-bd3e-897b02477a12" />
+
+<img width="872" alt="Screenshot 2025-03-03 at 02 03 01" src="https://github.com/user-attachments/assets/7df24c41-a21c-4c34-a8f5-c8746866a811" />
+
 
 
 
