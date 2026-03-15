@@ -24,12 +24,6 @@
     "eject": "react-scripts eject",
     "prepare": "husky"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -44,12 +38,15 @@
   },
   "devDependencies": {
     "eslint": "^8.57.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "prettier": "^3.8.1"
+    "prettier": "^3.8.1",
+    "putout": "^31.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
+      "putout --fix",
       "eslint --fix --max-warnings=0",
       "prettier --write"
     ],

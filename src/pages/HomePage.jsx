@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import TaskModal from "../components/TaskModal";
 import TaskTable from "../components/TaskTable";
 import { BASE_URL } from "../utils/config";
@@ -15,7 +14,6 @@ const HomePage = () => {
   const [successMessage, setSuccessMessage] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [task, setTask] = useState({
     title: "",
@@ -28,19 +26,20 @@ const HomePage = () => {
   useEffect(() => {
     const getAllTasks = async () => {
       const url = `${BASE_URL}/tasks`;
+
       try {
         const response = await fetch(url);
+
         if (!response.ok) {
-          console.log(response);
-          throw new Error(`Response status: ${response.status}`);
+          throw Error(`Response status: ${response.status}`);
         }
+
         const json = await response.json();
-        console.log(json.data);
+
         setTasks(json.data);
-      } catch (e) {
-        console.error("Error fetching tasks:", e);
-      }
+      } catch {}
     };
+
     getAllTasks();
   }, []);
 
@@ -59,7 +58,6 @@ const HomePage = () => {
       formData.append("image", data.image);
     }
 
-    console.log(formData);
     try {
       const response = await fetch(uri, {
         method: "POST",
@@ -68,18 +66,20 @@ const HomePage = () => {
           Accept: "application/json",
         },
       });
+
       if (!response.ok) {
         setIsLoading(false);
-        console.log(response);
+
         const errorText = await response.text();
-        console.error(`Error: ${response.status} - ${errorText}`);
+
         if (response.status === 422) {
           const errorData = JSON.parse(errorText);
           setErrors(errorData.errors);
         }
       }
+
       const json = await response.json();
-      console.log(json);
+
       if (json.success) {
         setSuccessMessage(json.message);
         setTasks((prevTasks) => [json.data, ...prevTasks]);
@@ -105,12 +105,9 @@ const HomePage = () => {
         formData.append(key, data[key]);
       }
     }
-
     if (data.image) {
       formData.append("image", data.image);
     }
-
-    console.log("FormData:", formData);
 
     try {
       const response = await fetch(uri, {
@@ -124,21 +121,20 @@ const HomePage = () => {
       if (!response.ok) {
         setIsLoading(false);
         const errorText = await response.text();
-        console.error(`Error: ${response.status} - ${errorText}`);
+
         if (response.status === 422) {
           const errorData = JSON.parse(errorText);
           setErrors(errorData.errors);
         }
+
         return;
       }
 
       const json = await response.json();
-      console.log(json);
 
       if (json.success) {
         setIsLoading(false);
         setSuccessMessage(json.message);
-
         // Update the task in the list
         setTasks((prevTasks) =>
           prevTasks.map((task) => (task.id === taskId ? json.data : task)),
@@ -148,14 +144,14 @@ const HomePage = () => {
         setIsLoading(false);
         setErrorMessage(json.message);
       }
-    } catch (e) {
+    } catch {
       setIsLoading(false);
-      console.error("Error updating task:", e);
     }
   };
 
   const deleteTask = async (index) => {
     const url = `${BASE_URL}/tasks/${index}`;
+
     try {
       const response = await fetch(url, {
         method: "delete",
@@ -165,17 +161,14 @@ const HomePage = () => {
       });
 
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error(`Error: ${response.status} - ${errorText}`);
         return;
       }
+
       const json = await response.json();
-      console.log(json);
+
       setSuccessMessage(json.data.message);
       setTasks((prevTasks) => prevTasks.filter((task) => task.id !== index));
-    } catch (e) {
-      console.error("Error occurred deleting:", e);
-    }
+    } catch {}
   };
 
   const handleSubmit = (e) => {
@@ -184,6 +177,7 @@ const HomePage = () => {
     if (isView) {
       return;
     }
+
     if (isEdit) {
       editTask(taskId, task);
     } else {
@@ -204,7 +198,6 @@ const HomePage = () => {
     setIsView(false);
     setIsEdit(false);
     setModalVisible(true);
-    console.log(task);
   };
 
   const handleEditTask = (taskId, taskData) => {
@@ -240,7 +233,6 @@ const HomePage = () => {
         onDelete={handleDeleteTask}
         onHandleAddTask={handleAddTask}
       />
-
       <TaskModal
         show={modalVisible}
         onClose={() => setModalVisible(false)}
