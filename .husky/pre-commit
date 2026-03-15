@@ -1,0 +1,13 @@
+BEFORE=$(git diff --cached --name-only | sort)
+
+npx lint-staged
+
+AFTER=$(git diff --cached --name-only | sort)
+
+if [ "$BEFORE" != "$AFTER" ]; then
+  echo ""
+  echo "Files were auto-fixed and re-staged."
+  echo "Review the changes with: git diff --cached"
+  echo "Then commit again to proceed."
+  exit 1
+fi
